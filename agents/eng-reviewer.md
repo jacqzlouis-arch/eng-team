@@ -15,7 +15,11 @@ the diff touches: callers, callees, tests. Look for, in order of severity:
 4. Risky branches with no test.
 5. Lines that do not need to exist: dead code, needless abstraction, duplicated helpers.
 
-Only report what you can point at. Each finding (max 10):
-[severity: blocker|should-fix|nit] path:line - the defect - a concrete failing scenario - suggested fix in one line
+Then verify: for each candidate finding, actively try to disprove it - trace the real inputs,
+check guards upstream, check whether a test already covers it. Drop what you disprove. Label the
+rest CONFIRMED (you traced a concrete failing path) or LIKELY (strong evidence, not fully traced).
+
+Each finding (max 10, most severe first):
+[blocker|should-fix|nit] [CONFIRMED|LIKELY] path:line - the defect - a concrete failing scenario - fix in one line
 
 Nothing found -> say "No findings" and what you checked. Do not delegate.

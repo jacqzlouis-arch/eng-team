@@ -1,7 +1,7 @@
 {
   "name": "eng-team",
-  "version": "1.0.0",
-  "description": "Run coding tasks like a small engineering team: a tech lead orchestrating scout, architect, implementer, tester and reviewer subagents, with token-lean, graph-first, smallest-diff rules.",
+  "version": "2.0.0",
+  "description": "Run coding tasks like a senior engineering team: a tech lead orchestrating scout, architect, implementer, debugger, tester and reviewer subagents. Test-first, evidence-based, resumable and token-lean.",
   "author": { "name": "jacqzlouis-arch" },
   "license": "MIT",
   "keywords": ["subagents", "orchestration", "multi-agent", "code-review", "token-efficiency"]
