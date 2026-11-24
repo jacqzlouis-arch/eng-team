@@ -39,8 +39,8 @@ spec, and dispatches self-contained work orders to six specialist subagents:
   measure-before-optimising.
 - **Test first.** Implementers show the failing test, then the passing one.
 - **Evidence or it didn't happen.** Nothing is reported as passing without command output.
-- **Self-verifying reviews.** The reviewer tries to disprove each of its own findings and labels the
-  rest CONFIRMED or LIKELY - far fewer false alarms.
+- **Proven reviews.** A finding is CONFIRMED only when a command reproduces it; read-only
+  suspicions stay LIKELY and don't block (except auth, money, data, concurrency). Max 5 findings.
 - **Escalation ladder instead of loops.** A second failure goes to the debugger for root cause, then
   to the architect, then to you with options. No thrashing.
 - **Resumable.** Spec and progress live in `.eng-team/` (gitignored), so long tasks survive context
@@ -57,6 +57,8 @@ spec, and dispatches self-contained work orders to six specialist subagents:
 - **Capped reports** with `path:line` references, never code dumps.
 - **Smallest complete diff** (pairs well with a minimal-diff skill like ponytail).
 - Warm agents are reused, fan-out is capped at 3, delegation is one level deep.
+- Implementers run one at a time unless the spec fixes the shared interfaces first.
+- A run budget (~8 spawns, 2 architect calls) stops runaway cost and asks you.
 
 ## Install
 
@@ -87,13 +89,26 @@ DONE / CHANGED / VERIFIED / SKIPPED / RISKS
 ## Safety
 
 Engineers never commit, push, merge, delete or run destructive commands, and never delegate further.
+This is enforced, not just asked: a bundled `PreToolUse` hook (`hooks/guard-git.js`) blocks git
+writes from every `eng-*` agent, and the implementer has no Agent tool.
 Irreversible or outward-facing steps (real-data migrations, deploys, publishing) always need your go.
 
 ## Customise
 
 - Role models: the `model:` line in `agents/<role>.md`.
 - Team sizes, fan-out, loop caps: `skills/eng-team/SKILL.md`.
-- Mode disciplines: `skills/eng-team/references/playbooks.md`.
+- Mode disciplines: `skills/eng-team/references/playbooks.md` (feature, bugfix, refactor, migration,
+  perf, ui, infra, hard-bug, review).
+
+## Test the plugin
+
+```
+node hooks/guard-git.test.js          # hook self-check
+claude plugin validate . --strict
+claude plugin eval . --allow-tools Bash Write Edit Agent
+```
+
+See `CHANGELOG.md` for what changed between versions.
 
 ## License
 

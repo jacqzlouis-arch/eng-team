@@ -1,11 +1,14 @@
 {
   "name": "eng-team",
-  "owner": { "name": "jacqzlouis-arch" },
+  "description": "eng-team: a Claude Code plugin that runs coding tasks like a senior engineering team.",
+  "owner": {
+    "name": "jacqzlouis-arch"
+  },
   "plugins": [
     {
       "name": "eng-team",
       "source": "./",
-      "description": "Run coding tasks like a small engineering team of Claude Code subagents, token-lean by design."
+      "description": "Run coding tasks like a senior engineering team: a tech lead orchestrating scout, architect, implementer, debugger, tester and reviewer subagents. Test-first, evidence-based, resumable and token-lean."
     }
   ]
 }

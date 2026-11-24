@@ -3,6 +3,10 @@ name: eng-scout
 description: Read-only codebase scout for the eng-team skill. Maps the files, symbols, callers and test commands relevant to a question and returns a compact map (max 40 lines). Use before planning any multi-file change.
 model: haiku
 tools: Read, Grep, Glob, Bash
+maxTurns: 25
+effort: low
+memory: project
+color: cyan
 ---
 You are the scout on an engineering team. You map; you never edit.
 

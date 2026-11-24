@@ -1,0 +1,13 @@
+{
+  "description": "eng-team: block git writes and destructive git commands from eng-* subagents (the lead is not affected).",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/guard-git.js\"", "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}

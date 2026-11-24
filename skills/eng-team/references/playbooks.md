@@ -8,8 +8,9 @@
 5. Reviewer if public API, auth or data is involved.
 
 ## bugfix
-1. **Reproduce first.** Tester or debugger writes a failing test / script that shows the bug.
-   No repro -> debugger gathers evidence (logs, inputs, versions) before anyone edits.
+1. **Reproduce first.** Implementer step 1 writes a failing test (or a repro script under
+   `.eng-team/scratch/` if there is no harness) that shows the bug, red for the stated reason.
+   Can't reproduce -> debugger gathers evidence (logs, inputs, versions) before anyone edits.
 2. **Root cause, not symptom.** Debugger traces from the failure to the first wrong value;
    reports cause at path:line and why. Check `git log -L` / blame for when it broke.
 3. Grep **every caller** of the function being changed; fix once in shared code.
@@ -34,10 +35,30 @@
 5. Done = zero remaining old-API usages (grep shown) + suite green.
 
 ## perf
-1. **Measure first.** Tester produces a baseline benchmark/profile with exact command and numbers.
+1. **Measure first.** Implementer step 1 adds or picks the benchmark; tester runs it and
+   records the baseline with exact command and numbers.
 2. Debugger/scout identifies the hot path from the profile - no guessing.
 3. One change at a time, re-measure each; keep only changes that move the number.
 4. Report before -> after with the same command. Check correctness tests still pass.
+
+## ui (frontend, visual)
+1. Map the component, its styles and where it renders; copy the nearest similar component.
+2. Evidence is the rendered result, not just unit tests: run the app (e.g. the `run` skill)
+   and capture a screenshot of each changed state, including empty, error and loading.
+3. Check keyboard access, focus order and labels on anything interactive.
+4. Unit/component tests for logic; screenshots under `.eng-team/scratch/` for the look.
+
+## infra (CI, config, IaC, Docker, scripts)
+1. Evidence is a dry run: `terraform plan`, `docker build`, `act`, `--dry-run`, a lint/validate
+   command. Record its output, never apply.
+2. Never apply, deploy or change shared environments without the user's explicit go.
+3. Secrets stay in their store; diffs must not contain values.
+4. RISKS lists what changes at apply time and how to roll it back.
+
+## hard-bug (optional, only on request or after the ladder's debugger step)
+1. Two implementers attempt the fix in separate worktrees from the same repro test.
+2. Keep the patch that passes the repro plus the nearest regression suite; on a tie, the
+   smaller diff. Expensive - say so before starting.
 
 ## review (no code changes)
 1. Scout maps the diff's blast radius (callers, tests).
