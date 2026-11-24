@@ -7,7 +7,8 @@
   "homepage": "https://github.com/jacqzlouis-arch/eng-team",
   "repository": "https://github.com/jacqzlouis-arch/eng-team",
   "supportUrl": "https://github.com/jacqzlouis-arch/eng-team/issues",
-  "documentationUrl": "https://github.com/jacqzlouis-arch/eng-team#readme",
+  "privacyPolicyUrl": "https://github.com/jacqzlouis-arch/eng-team/blob/main/PRIVACY.md",
+  "documentationUrl":"https://github.com/jacqzlouis-arch/eng-team#readme",
   "license": "MIT",
   "keywords": ["subagents", "orchestration", "multi-agent", "code-review", "token-efficiency"]
 }
