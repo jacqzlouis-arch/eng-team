@@ -2,7 +2,12 @@
   "name": "eng-team",
   "version": "2.0.0",
   "description": "Run coding tasks like a senior engineering team: a tech lead orchestrating scout, architect, implementer, debugger, tester and reviewer subagents. Test-first, evidence-based, resumable and token-lean.",
+  "displayName": "eng-team",
   "author": { "name": "jacqzlouis-arch" },
+  "homepage": "https://github.com/jacqzlouis-arch/eng-team",
+  "repository": "https://github.com/jacqzlouis-arch/eng-team",
+  "supportUrl": "https://github.com/jacqzlouis-arch/eng-team/issues",
+  "documentationUrl": "https://github.com/jacqzlouis-arch/eng-team#readme",
   "license": "MIT",
   "keywords": ["subagents", "orchestration", "multi-agent", "code-review", "token-efficiency"]
 }
