@@ -3,6 +3,12 @@
 A Claude Code plugin that runs your coding tasks like a senior engineering team: **test-first,
 evidence-based, resumable and token-lean.**
 
+![eng-team fixing a bug on a sample repo](assets/demo-bugfix.png)
+
+*Real run on a small sample repo: the bug was copied into two modules and the existing tests didn't
+catch it. The skill sized it as a small job, so it spawned no subagents, and it finished in 25 s
+for $0.28. Bigger tasks get the full team.*
+
 The main session becomes the **Tech Lead**. It sizes the task, maps the codebase cheaply, writes a
 spec, and dispatches self-contained work orders to six specialist subagents:
 
